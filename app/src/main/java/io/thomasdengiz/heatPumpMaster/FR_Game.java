@@ -824,10 +824,9 @@ public class FR_Game extends Fragment  {
         for (int currentElement =0; currentElement <arrayList_GameEventRectangles.size(); currentElement++) {
 
 
-
             //Create view and set
             if (currentTimeSlot == arrayList_GameEventRectangles.get(currentElement).getStartingTimeSlot() - 15) {
-                Log.d("YourTag", "currentElement: " + currentElement + " - Create view and set");
+
                 arrayList_GameEventRectangles.get(currentElement).setActive(true);
 
 
@@ -894,14 +893,14 @@ public class FR_Game extends Fragment  {
             //Shift the view to the right border of the display. This is done before the view is being displayed to the user such that it can flow from right to left in the game
             if (currentTimeSlot == arrayList_GameEventRectangles.get(currentElement).getStartingTimeSlot() - 10) {
                 arrayList_GameEventRectangles.get(currentElement).setTranslationX(arrayList_GameEventRectangles.get(currentElement).getWidth());
-                Log.d("YourTag", "currentElement: " + currentElement + " - Shift to borders");
+
             }
 
 
             //Animate view element
             if (currentTimeSlot == arrayList_GameEventRectangles.get(currentElement).getStartingTimeSlot()) {
                 arrayList_GameEventRectangles.get(currentElement).getBackground().setAlpha(255);
-                Log.d("YourTag", "currentElement: " + currentElement + " - Animate view element");
+
 
                 View rectangle = arrayList_GameEventRectangles.get(currentElement);
                 int rectangleWidth = rectangle.getWidth();

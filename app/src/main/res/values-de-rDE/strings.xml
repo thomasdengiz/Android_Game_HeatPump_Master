@@ -45,7 +45,7 @@
 
     <string name="cap_efficiency">Effizienz verschiedener Heiztechnologien</string>
     <string name="cap_energy_consumption">Energieverbrauch in Haushalten (EU)</string>
-    <string name="cap_emissions">Emissionen verschiedener Heiztechnologien</string>
+    <string name="cap_emissions">Emissionen verschiedener Heiztechnologien pro Jahr</string>
     <string name="cap_grid">Netzstabilisierung</string>
 
     <string name="top_scores_for_this_level">Beste Ergebnisse für dieses Level</string>
@@ -109,5 +109,7 @@ Dadurch wird  die Temperatur im Gebäude und das Wasser im Speicher reduziert.</
     <string name="privacy_policy">Datenschutzerklärung</string>
 
     <string name="privacy_policy_message">Mit der Übermittlung deines Highscores erklärst du dich damit einverstanden, dass dein eingegebener Name, dein Score und das Datum der Übermittlung für die Bestenliste gespeichert werden. Es werden keine weiteren Daten erhoben. Falls du möchtest, dass deine Daten gelöscht werden, sende bitte eine E-Mail an thomas.dengiz@yahoo.de. Sofern der Score nach einem Monat nicht unter den Top 10 ist, wird der Eintrag automatisch gelöscht.</string>
+    <string name="language">Sprache</string>
+    <string name="music">Musik</string>
 
 </resources>

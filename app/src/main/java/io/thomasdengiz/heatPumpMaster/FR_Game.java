@@ -10,10 +10,12 @@ import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -47,6 +49,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 
 /*
@@ -167,7 +170,7 @@ public class FR_Game extends Fragment  {
     private SoundPool soundPool;
     private final Map<Integer, Integer> soundMap = new HashMap<>();
 
-
+    private MediaPlayer mediaPlayer;
 
     private boolean helpIndicatorPointsAlreadyCountedDuringCurrentTimeSlot = false;
 
@@ -226,10 +229,10 @@ public class FR_Game extends Fragment  {
                 .build();
 
         int[] rawResIds = new int[] {
-                R.raw.app_game_shower_1,
-                R.raw.app_game_warning_1,
-                R.raw.app_game_wind_1,
-                R.raw.app_game_window_1
+                R.raw.sound_shower_1,
+                R.raw.sound_warning_1,
+                R.raw.sound_wind_1,
+                R.raw.sound_window_1
         };
 
         for (int resId : rawResIds) {
@@ -581,10 +584,47 @@ public class FR_Game extends Fragment  {
             }
         }
 
+
+        // Play random background music
+        playRandomBackgroundMusic();
+
         countDownTime();
 
 
+
+
+
     }
+
+
+
+    /*
+    This method plays a random background music out of a list of raw resources using the media player
+     */
+    private void playRandomBackgroundMusic() {
+
+        if (!FR_Settings.getMusicOn(requireContext())) return;
+        // Release any previous media player
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+        }
+
+        // Array of  raw music resources
+        int[] musicFiles = {
+                R.raw.music_fresh_focus,
+                R.raw.music_modern_island_jam,
+                R.raw.music_natural_vibes
+        };
+
+        // Pick one at random
+        int randomIndex = new Random().nextInt(musicFiles.length);
+        int selectedMusic = musicFiles[randomIndex];
+
+        // Create and start the MediaPlayer
+        mediaPlayer = MediaPlayer.create(getContext(), selectedMusic);
+        mediaPlayer.start();
+    }
+
 
 
 
@@ -683,7 +723,7 @@ public class FR_Game extends Fragment  {
 
         if (visibilityWarningThermometer || visibilityWarningHotWaterTank) {
             binding.imageViewWarning.setVisibility(View.VISIBLE);
-            playAudioFile(R.raw.app_game_warning_1);
+            playAudioFile(R.raw.sound_warning_1);
         }
         else {
             binding.imageViewWarning.setVisibility(View.INVISIBLE);
@@ -757,7 +797,7 @@ public class FR_Game extends Fragment  {
         //Play the wind audio file if the current active element is a wind rectangle
         View_Game_Event_Rectangle currentlyActiveEventRectangleInTargetForSound = checkPositionsOfActiveElements(false);
         if (currentlyActiveEventRectangleInTargetForSound != null && currentlyActiveEventRectangleInTargetForSound.getEventType().equals(VIEW_EVENT_RECTANGLE_WIND)) {
-            playAudioFile(R.raw.app_game_wind_1);
+            playAudioFile(R.raw.sound_wind_1);
         }
 
 
@@ -784,9 +824,10 @@ public class FR_Game extends Fragment  {
         for (int currentElement =0; currentElement <arrayList_GameEventRectangles.size(); currentElement++) {
 
 
+
             //Create view and set
             if (currentTimeSlot == arrayList_GameEventRectangles.get(currentElement).getStartingTimeSlot() - 15) {
-
+                Log.d("YourTag", "currentElement: " + currentElement + " - Create view and set");
                 arrayList_GameEventRectangles.get(currentElement).setActive(true);
 
 
@@ -853,13 +894,14 @@ public class FR_Game extends Fragment  {
             //Shift the view to the right border of the display. This is done before the view is being displayed to the user such that it can flow from right to left in the game
             if (currentTimeSlot == arrayList_GameEventRectangles.get(currentElement).getStartingTimeSlot() - 10) {
                 arrayList_GameEventRectangles.get(currentElement).setTranslationX(arrayList_GameEventRectangles.get(currentElement).getWidth());
+                Log.d("YourTag", "currentElement: " + currentElement + " - Shift to borders");
             }
 
 
             //Animate view element
             if (currentTimeSlot == arrayList_GameEventRectangles.get(currentElement).getStartingTimeSlot()) {
                 arrayList_GameEventRectangles.get(currentElement).getBackground().setAlpha(255);
-
+                Log.d("YourTag", "currentElement: " + currentElement + " - Animate view element");
 
                 View rectangle = arrayList_GameEventRectangles.get(currentElement);
                 int rectangleWidth = rectangle.getWidth();
@@ -881,6 +923,7 @@ public class FR_Game extends Fragment  {
 
             //Check if the view is still running
             if (arrayList_GameEventRectangles.get(currentElement).isActive() && currentElement==0) {
+
 
                 if (arrayList_GameEventRectangles.get(currentElement).getX() < arrayList_GameEventRectangles.get(currentElement).getWidth() * (-0.8)) {
                     arrayList_GameEventRectangles.get(currentElement).incrementNumberOfTimeSlotsAfterFinishing();
@@ -1052,7 +1095,7 @@ public class FR_Game extends Fragment  {
             if (typeOfFlyingButton.equals(FLYING_BUTTON_SHOWER)) {
                 isFlyingButtonPressedShower = true;
                 helpCounterFlyingButtonShowerPressed = 0;
-                playAudioFile(R.raw.app_game_shower_1);
+                playAudioFile(R.raw.sound_shower_1);
 
                 // Create a blinking animation
                 binding.imageViewHotWaterShower.setVisibility(View.VISIBLE);
@@ -1066,7 +1109,7 @@ public class FR_Game extends Fragment  {
             if (typeOfFlyingButton.equals(FLYING_BUTTON_AIR)) {
                 isFlyingButtonPressedAir = true;
                 helpCounterFlyingButtonAirPressed = 0;
-                playAudioFile(R.raw.app_game_window_1);
+                playAudioFile(R.raw.sound_window_1);
 
                 // Create a blinking animation
                 binding.imageViewOpenWindow.setVisibility(View.VISIBLE);
@@ -1211,6 +1254,11 @@ public class FR_Game extends Fragment  {
         if (soundPool != null) {
             soundPool.release();
             soundPool = null;
+        }
+
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
         }
 
 

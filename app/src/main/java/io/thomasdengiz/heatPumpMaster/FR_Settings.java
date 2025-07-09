@@ -33,6 +33,8 @@ public class FR_Settings extends Fragment implements View.OnClickListener {
 
     private static final String LANGUAGE = "LANGUAGE";
     private static final String SOUND_ON = "SOUND_ON";
+
+    private static final String MUSIC_ON = "MUSIC_ON";
     private static final String SHARED_PREFS_NAME= "SHARED_PREFS_NAME";
 
     public FR_Settings() {
@@ -63,24 +65,36 @@ public class FR_Settings extends Fragment implements View.OnClickListener {
         binding.imageButtonUK.setOnClickListener(this);
         binding.imageButtonSoundOff.setOnClickListener(this);
         binding.imageButtonSoundOn.setOnClickListener(this);
+        binding.imageButtonMusicOff.setOnClickListener(this);
+        binding.imageButtonMusicOn.setOnClickListener(this);
 
         if(getLanguage(requireContext()).equals("en")) {
-            binding.imageButtonGermany.setAlpha(0.5f);
+            binding.imageButtonGermany.setAlpha(0.35f);
             binding.imageButtonUK.setAlpha(1.0f);
         }
         if(getLanguage(requireContext()).equals("de")) {
             binding.imageButtonGermany.setAlpha(1.0f);
-            binding.imageButtonUK.setAlpha(0.5f);
+            binding.imageButtonUK.setAlpha(0.35f);
         }
 
         if (getSoundOn(requireContext())) {
             binding.imageButtonSoundOn.setAlpha(1.0f);
-            binding.imageButtonSoundOff.setAlpha(0.5f);
+            binding.imageButtonSoundOff.setAlpha(0.35f);
         }
 
         if (!getSoundOn(requireContext())) {
-            binding.imageButtonSoundOn.setAlpha(0.5f);
+            binding.imageButtonSoundOn.setAlpha(0.35f);
             binding.imageButtonSoundOff.setAlpha(1.0f);
+        }
+
+        if (getMusicOn(requireContext())) {
+            binding.imageButtonMusicOn.setAlpha(1.0f);
+            binding.imageButtonMusicOff.setAlpha(0.35f);
+        }
+
+        if (!getMusicOn(requireContext())) {
+            binding.imageButtonMusicOn.setAlpha(0.35f);
+            binding.imageButtonMusicOff.setAlpha(1.0f);
         }
 
     }
@@ -95,12 +109,14 @@ public class FR_Settings extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
 
 
+        /*
+        Handle the pressing of the soundOn/soundOff buttons
+         */
+
         if(view.getId() == R.id.imageButtonGermany) {
 
-             /*
-            Set the language to "German" for other fragments and database queries
-             */
 
+            //Set the language to "German" for other fragments and database queries
             currentLanguageOfTheApp = LANGUAGE_GERMAN;
 
             setLanguage(requireContext(), "de");
@@ -114,10 +130,7 @@ public class FR_Settings extends Fragment implements View.OnClickListener {
 
         if(view.getId() == R.id.imageButtonUK) {
 
-            /*
-            Set the language to "English" for other fragments and database queries
-             */
-
+            //Set the language to "English" for other fragments and database queries
             currentLanguageOfTheApp = LANGUAGE_ENGLISH;
             setLanguage(requireContext(), "en");
 
@@ -127,19 +140,41 @@ public class FR_Settings extends Fragment implements View.OnClickListener {
 
         }
 
+        /*
+        Handle the pressing of the soundOn/soundOff buttons
+         */
+
         if (view.getId()==R.id.imageButtonSoundOn) {
             binding.imageButtonSoundOn.setAlpha(1.0f);
-            binding.imageButtonSoundOff.setAlpha(0.5f);
+            binding.imageButtonSoundOff.setAlpha(0.35f);
             setSoundOn(requireContext(), true);
 
         }
 
         if (view.getId()==R.id.imageButtonSoundOff) {
-            binding.imageButtonSoundOn.setAlpha(0.5f);
+            binding.imageButtonSoundOn.setAlpha(0.35f);
             binding.imageButtonSoundOff.setAlpha(1.0f);
             setSoundOn(requireContext(), false);
 
         }
+
+        /*
+        Handle the pressing of the musicOn/musicOff buttons
+         */
+
+        if (view.getId()==R.id.imageButtonMusicOn) {
+            binding.imageButtonMusicOn.setAlpha(1.0f);
+            binding.imageButtonMusicOff.setAlpha(0.35f);
+            setMusicOn(requireContext(), true);
+
+        }
+
+        if (view.getId()==R.id.imageButtonMusicOff) {
+            binding.imageButtonMusicOn.setAlpha(0.35f);
+            binding.imageButtonMusicOff.setAlpha(1.0f);
+            setMusicOn(requireContext(), false);
+        }
+
 
 
     }
@@ -166,6 +201,21 @@ public class FR_Settings extends Fragment implements View.OnClickListener {
     public static boolean getSoundOn (Context context) {
         SharedPreferences prefs = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
         return Boolean.parseBoolean(prefs.getString(SOUND_ON, "true"));
+
+    }
+
+
+
+    public static void  setMusicOn (Context context, boolean musicOn) {
+        SharedPreferences prefs = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(MUSIC_ON, Boolean.toString(musicOn));
+        editor.apply();
+    }
+
+    public static boolean getMusicOn (Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+        return Boolean.parseBoolean(prefs.getString(MUSIC_ON, "true"));
 
     }
 

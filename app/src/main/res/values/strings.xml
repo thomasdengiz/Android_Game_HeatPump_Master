@@ -46,7 +46,7 @@
 
     <string name="cap_efficiency">Efficiency of different heating technologies</string>
     <string name="cap_energy_consumption">Energy consumption in households (EU)</string>
-    <string name="cap_emissions">Emissions of different heating technologies</string>
+    <string name="cap_emissions">Emissions of different heating technologies per year</string>
     <string name="cap_grid">Grid stabilization</string>
 
     <string name="top_scores_for_this_level">Top scores for this level</string>
@@ -107,6 +107,8 @@
     <string name="privacy_policy">Privacy Policy</string>
 
     <string name="privacy_policy_message">By submitting a high score, you agree that your entered name, score, and submission date will be stored for leaderboard purposes. No other data is collected. If you want your data to be deleted, please send an E-Mail to thomas.dengiz@yahoo.de. If your score is not among the top 10 after one month, the entry will be automatically deleted.</string>
+    <string name="language">Language</string>
+    <string name="music">Music</string>
 
 
 </resources>

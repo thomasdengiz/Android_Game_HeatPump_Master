@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
 
 
-        android:text="Choose your language"
+        android:text="@string/language"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -90,7 +90,7 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintVertical_bias="0.50"
+        app:layout_constraintVertical_bias="0.40"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
         android:id="@+id/imageButtonSoundOn"
         android:layout_width="80dp"
         android:layout_height="73dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/baseline_volume_on_24"
         app:layout_constraintEnd_toEndOf="@+id/imageButtonGermany"
         app:layout_constraintStart_toStartOf="@+id/imageButtonGermany"
@@ -115,6 +115,42 @@
         app:layout_constraintEnd_toEndOf="@+id/imageButtonUK"
         app:layout_constraintStart_toStartOf="@+id/imageButtonUK"
         app:layout_constraintTop_toTopOf="@+id/imageButtonSoundOn" />
+
+
+    <TextView
+        android:id="@+id/textView_Musik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/music"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintVertical_bias="0.70"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonMusicOn"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/baseline_music_note_on"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonSoundOn"
+        app:layout_constraintStart_toStartOf="@+id/imageButtonSoundOn"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Musik" />
+
+    <ImageButton
+        android:id="@+id/imageButtonMusicOff"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:background="@drawable/baseline_music_off"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonMusicOn"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonSoundOff"
+        app:layout_constraintStart_toStartOf="@+id/imageButtonSoundOff"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonMusicOn" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,8 +21,8 @@ Additionally, the app includes interesting facts about heat pumps, showing why t
 ![Screenshot_LevelEnd](https://github.com/user-attachments/assets/9fe47a89-1835-4e09-8711-708ce9101f7a)
 *Level completed screen*
 
-![Screenshot_HeatPumpMaster_InterestingFacts](https://github.com/user-attachments/assets/3f457bed-e7d6-4b98-a7d7-2b45e7efcc38)  
-*Interesting facts about heat pumps*
+![Screenshot_HeatPumpMaster_InterestingFacts](https://github.com/user-attachments/assets/cfa81c00-5475-40e5-bbf4-95f459def184) 
+*Interesting facts about heat pumps* 
 
 ![Screenshot_HeatPumpMaster_Menu_rounded](https://github.com/user-attachments/assets/34db8206-95b1-40e8-b1c3-75912aa18503)  
 *Main menu*

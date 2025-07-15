@@ -584,6 +584,69 @@ public class FR_Game extends Fragment  {
             }
         }
 
+        for (int currentElement =0; currentElement <arrayList_GameEventRectangles.size(); currentElement++) {
+        //Set the parameters and the background of the view element
+        arrayList_GameEventRectangles.get(currentElement).setLayoutParams(new ViewGroup.LayoutParams(0, 0));
+
+        if(arrayList_GameEventRectangles.get(currentElement).getEventType().equals(VIEW_EVENT_RECTANGLE_SOLAR)) {
+            arrayList_GameEventRectangles.get(currentElement).setBackground(Objects.requireNonNull(ContextCompat.getDrawable(requireActivity(), R.drawable.game_event_rectangle_solar_1)).mutate());
+        }
+
+        if(arrayList_GameEventRectangles.get(currentElement).getEventType().equals(VIEW_EVENT_RECTANGLE_WIND)) {
+            arrayList_GameEventRectangles.get(currentElement).setBackground(Objects.requireNonNull(ContextCompat.getDrawable(requireActivity(), R.drawable.game_event_rectangle_wind_1)).mutate());
+        }
+
+        if(arrayList_GameEventRectangles.get(currentElement).getEventType().equals(VIEW_EVENT_RECTANGLE_GAS)) {
+            arrayList_GameEventRectangles.get(currentElement).setBackground(Objects.requireNonNull(ContextCompat.getDrawable(requireActivity(), R.drawable.game_event_rectangle_gas_1)).mutate());
+        }
+
+        if(arrayList_GameEventRectangles.get(currentElement).getEventType().equals(VIEW_EVENT_RECTANGLE_COAL)) {
+            arrayList_GameEventRectangles.get(currentElement).setBackground(Objects.requireNonNull(ContextCompat.getDrawable(requireActivity(), R.drawable.game_event_rectangle_coal_1)).mutate());
+        }
+
+
+
+
+
+
+
+            arrayList_GameEventRectangles.get(currentElement).setId(View.generateViewId());
+
+            //Make the view invisible (before it's appearance time)
+            arrayList_GameEventRectangles.get(currentElement).getBackground().setAlpha(0);
+
+            constraintLayout.bringChildToFront(binding.imageViewTargetRectangle);
+            // Set the ConstraintLayout programmatically for the view
+            View view = arrayList_GameEventRectangles.get(currentElement);
+            ViewGroup parent = (ViewGroup) view.getParent();
+
+            // Check if the view already has a parent
+            if (parent != null) {
+                parent.removeView(view); // Remove the view from its existing parent
+            }
+
+            constraintLayout.addView(view); // Now add the view to the constraintLayout
+
+
+            constraintSet.clone(constraintLayout);
+            float percentageHeightOfEventElement = 0.071f;
+            constraintSet.constrainPercentHeight(arrayList_GameEventRectangles.get(currentElement).getId(), percentageHeightOfEventElement);
+
+            float widthConstrainPercentage_element1 = (float)(arrayList_GameEventRectangles.get(currentElement).getDuration() / 100.0);
+
+            constraintSet.constrainPercentWidth(arrayList_GameEventRectangles.get(currentElement).getId(), widthConstrainPercentage_element1);
+            constraintSet.connect(arrayList_GameEventRectangles.get(currentElement).getId(),ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID,ConstraintSet.BOTTOM,0);
+            constraintSet.connect(arrayList_GameEventRectangles.get(currentElement).getId(),ConstraintSet.TOP,ConstraintSet.PARENT_ID ,ConstraintSet.TOP,0);
+            constraintSet.connect(arrayList_GameEventRectangles.get(currentElement).getId(),ConstraintSet.LEFT,ConstraintSet.PARENT_ID ,ConstraintSet.LEFT,0);
+            constraintSet.connect(arrayList_GameEventRectangles.get(currentElement).getId(),ConstraintSet.RIGHT,ConstraintSet.PARENT_ID ,ConstraintSet.RIGHT,0);
+
+            float horizontalBias = 1.0f ;
+            constraintSet.setHorizontalBias(arrayList_GameEventRectangles.get(currentElement).getId(), horizontalBias);
+            float verticalBiasOfEventElementToBeInTheLine = 0.049f;
+            constraintSet.setVerticalBias(arrayList_GameEventRectangles.get(currentElement).getId(), verticalBiasOfEventElementToBeInTheLine);
+            constraintSet.applyTo(constraintLayout);
+        }
+
 
         // Play random background music
         playRandomBackgroundMusic();
@@ -830,62 +893,7 @@ public class FR_Game extends Fragment  {
                 arrayList_GameEventRectangles.get(currentElement).setActive(true);
 
 
-                //Set the parameters and the background of the view element
-                arrayList_GameEventRectangles.get(currentElement).setLayoutParams(new ViewGroup.LayoutParams(0, 0));
 
-                if(arrayList_GameEventRectangles.get(currentElement).getEventType().equals(VIEW_EVENT_RECTANGLE_SOLAR)) {
-                    arrayList_GameEventRectangles.get(currentElement).setBackground(Objects.requireNonNull(ContextCompat.getDrawable(requireActivity(), R.drawable.game_event_rectangle_solar_1)).mutate());
-                }
-
-                if(arrayList_GameEventRectangles.get(currentElement).getEventType().equals(VIEW_EVENT_RECTANGLE_WIND)) {
-                    arrayList_GameEventRectangles.get(currentElement).setBackground(Objects.requireNonNull(ContextCompat.getDrawable(requireActivity(), R.drawable.game_event_rectangle_wind_1)).mutate());
-                }
-
-                if(arrayList_GameEventRectangles.get(currentElement).getEventType().equals(VIEW_EVENT_RECTANGLE_GAS)) {
-                    arrayList_GameEventRectangles.get(currentElement).setBackground(Objects.requireNonNull(ContextCompat.getDrawable(requireActivity(), R.drawable.game_event_rectangle_gas_1)).mutate());
-                }
-
-                if(arrayList_GameEventRectangles.get(currentElement).getEventType().equals(VIEW_EVENT_RECTANGLE_COAL)) {
-                    arrayList_GameEventRectangles.get(currentElement).setBackground(Objects.requireNonNull(ContextCompat.getDrawable(requireActivity(), R.drawable.game_event_rectangle_coal_1)).mutate());
-                }
-
-
-
-                arrayList_GameEventRectangles.get(currentElement).setId(View.generateViewId());
-
-                //Make the view invisible (before it's appearance time)
-                arrayList_GameEventRectangles.get(currentElement).getBackground().setAlpha(0);
-
-                constraintLayout.bringChildToFront(binding.imageViewTargetRectangle);
-                // Set the ConstraintLayout programmatically for the view
-                View view = arrayList_GameEventRectangles.get(currentElement);
-                ViewGroup parent = (ViewGroup) view.getParent();
-
-               // Check if the view already has a parent
-                if (parent != null) {
-                    parent.removeView(view); // Remove the view from its existing parent
-                }
-
-                constraintLayout.addView(view); // Now add the view to the constraintLayout
-
-
-                constraintSet.clone(constraintLayout);
-                float percentageHeightOfEventElement = 0.071f;
-                constraintSet.constrainPercentHeight(arrayList_GameEventRectangles.get(currentElement).getId(), percentageHeightOfEventElement);
-
-                float widthConstrainPercentage_element1 = (float)(arrayList_GameEventRectangles.get(currentElement).getDuration() / 100.0);
-
-                constraintSet.constrainPercentWidth(arrayList_GameEventRectangles.get(currentElement).getId(), widthConstrainPercentage_element1);
-                constraintSet.connect(arrayList_GameEventRectangles.get(currentElement).getId(),ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID,ConstraintSet.BOTTOM,0);
-                constraintSet.connect(arrayList_GameEventRectangles.get(currentElement).getId(),ConstraintSet.TOP,ConstraintSet.PARENT_ID ,ConstraintSet.TOP,0);
-                constraintSet.connect(arrayList_GameEventRectangles.get(currentElement).getId(),ConstraintSet.LEFT,ConstraintSet.PARENT_ID ,ConstraintSet.LEFT,0);
-                constraintSet.connect(arrayList_GameEventRectangles.get(currentElement).getId(),ConstraintSet.RIGHT,ConstraintSet.PARENT_ID ,ConstraintSet.RIGHT,0);
-
-                float horizontalBias = 1.0f ;
-                constraintSet.setHorizontalBias(arrayList_GameEventRectangles.get(currentElement).getId(), horizontalBias);
-                float verticalBiasOfEventElementToBeInTheLine = 0.049f;
-                constraintSet.setVerticalBias(arrayList_GameEventRectangles.get(currentElement).getId(), verticalBiasOfEventElementToBeInTheLine);
-                constraintSet.applyTo(constraintLayout);
 
             }
 

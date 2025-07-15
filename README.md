@@ -115,3 +115,16 @@ All included libraries are permissively licensed and compatible with this projec
 
 If you use or distribute this project, please respect the licenses of these third-party components.
 
+
+## 🎵 Music Credits
+
+This game features royalty-free background music from [FreePD.com](https://freepd.com/) by Kevin MacLeod for the levels as MP3 files under the [**Creative Commons CC0 1.0 Universal (Public Domain)**](https://creativecommons.org/publicdomain/zero/1.0/legalcode) license :
+
+- 🎧 *Fresh Focus*  
+- 🎧 *Modern Island Jam*  
+- 🎧 *Natural Vibes*
+
+You are free to use, modify, and distribute these tracks without attribution. I gratefully acknowledge and appreciate the creator’s work.
+
+
+

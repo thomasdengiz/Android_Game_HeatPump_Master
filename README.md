@@ -7,7 +7,7 @@ In this game, you control the heating actions of a heat pump with the goal of us
 
 At the same time, you must maintain a high level of comfort by keeping the room temperature within a specified comfort range and ensuring that the hot water tank has enough—but not too much—hot water.
 
-Additionally, the app includes interesting facts about heat pumps, showing why they are crucial for decarbonizing the heating sector and achieving independence from fossil fuels—making them a key technology for the energy transition.
+Additionally, the app includes interesting facts about heat pumps, showing why they are crucial for decarbonizing the heating sector and achieving independence from fossil fuels, making them a key technology for the energy transition.
 
 
 

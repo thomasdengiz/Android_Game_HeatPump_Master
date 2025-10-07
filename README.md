@@ -11,6 +11,20 @@ Additionally, the app includes interesting facts about heat pumps, showing why t
 
 
 
+---
+## 📲 Get It on Google Play
+
+You can download **HeatPump Master** for free from the official Google Play Store!
+
+<div align="center">
+  <a href="https://play.google.com/store/apps/details?id=io.thomasdengiz.heatPumpMaster">
+    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="80"/>
+  </a>
+</div>
+
+---
+
+
 ## 📸 Screenshots
 ![Screenshot_Game_1](https://github.com/user-attachments/assets/cd60795c-b0a6-4b95-b12e-f70512177c19)
 *Gameplay screen*
@@ -79,11 +93,10 @@ Additionally, the app includes interesting facts about heat pumps, showing why t
 3. Install the APK on your Android device or emulator.
 
 
-## 📱 Get It on Google Play
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f14433c9-1a6f-4428-ba4c-a41654b30094" alt="ic_launcher_foreground" width="150"/>
-</p>
+
 -->
+
+
 
 
 ## 🛡️ License
